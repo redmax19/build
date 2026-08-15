@@ -34,7 +34,6 @@ runs:
         shell: bash
         run: |
           cd $GITHUB_WORKSPACE/device_kernel/
-          sed -i '/int (\*show_options)(struct seq_file \*, struct dentry \*);/a \    int (*show_options2)(struct vfsmount *, struct seq_file *, struct dentry *);' include/linux/fs.h
 
           # Function
           BUILD_PROCESS(){
