@@ -90,11 +90,11 @@ jobs:
     secrets: inherit
 
   # Samsung
-  build-samsung-note10plus-oneui-a15:
-    name: "Samsung Note 10 Plus (OneUI A15)"
+  build-samsung-s20fe-oneui-a16:
+    name: "Samsung s20fe (OneUI A16)"
     strategy:
       fail-fast: true
-    uses: ./.github/workflows/build-samsung-note10plus-oneui-a15.yml
+    uses: ./.github/workflows/build-samsung-s20fe-oneui-a16.yml
     secrets: inherit
 
   build-samsung-note10-oneui-a15:
