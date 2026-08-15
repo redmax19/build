@@ -12,8 +12,8 @@ env:
   CUSTOM_CMDS : "CROSS_COMPILE=aarch64-linux-gnu-"
   EXTRA_CMDS : "LLVM=1 LLVM_IAS=1"
 
-  KERNEL_SOURCE : "https://github.com/LineageOS/android_kernel_samsung_universal9830"
-  KERNEL_BRANCH : "lineage-23.2"
+  KERNEL_SOURCE : "https://github.com/redmax19/android_kernel_samsung_universal9830.git"
+  KERNEL_BRANCH : "main"
 
   CLANG_SOURCE : "https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b.git"
   CLANG_BRANCH : "lineage-20.0"
@@ -33,7 +33,7 @@ env:
   KERNELSU_BRANCH : ""
 
   KERNELSU_AUTO_GET : "true" # if u want easy setting kernelsu, u can true.
-  KERNELSU_AUTO_FORK : "resukisu" # xxksu, rsuntk, next, resukisu and sukisu
+  KERNELSU_AUTO_FORK : "next" # xxksu, rsuntk, next, resukisu and sukisu
 
   SUSFS_ENABLE : true
   SUSFS_FIXED : true
