@@ -1,4 +1,4 @@
-name: Build Redmi Note 11 Pro 5G (Based AOSP A16)
+name: Build S20FE (Based AOSP A16)
 
 on:
   workflow_call:
@@ -6,26 +6,26 @@ on:
 
 env:
   # Device env
-  DEVICE_NAME : "redmi_note_11_pro_5g"
-  DEVICE_CODENAME : "veux"
+  DEVICE_NAME : "galaxy_s20_fe"
+  DEVICE_CODENAME : "r8s"
 
-  CUSTOM_CMDS : "CLANG_TRIPLE=aarch64-linux-gnu-"
-  EXTRA_CMDS : "LD=ld.lld"
+  CUSTOM_CMDS : "CROSS_COMPILE=aarch64-linux-gnu-"
+  EXTRA_CMDS : "LLVM=1 LLVM_IAS=1"
 
-  KERNEL_SOURCE : "https://github.com/dereference23/kernel_xiaomi_sm6375.git"
-  KERNEL_BRANCH : "main"
+  KERNEL_SOURCE : "https://github.com/LineageOS/android_kernel_samsung_universal9830"
+  KERNEL_BRANCH : "lineage-23.2"
 
   CLANG_SOURCE : "https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b.git"
   CLANG_BRANCH : "lineage-20.0"
 
   GCC_GNU : false
-  GCC_64_SOURCE : "https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9.git"
-  GCC_64_BRANCH : "android12L-release"
-  GCC_32_SOURCE : "https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9.git"
-  GCC_32_BRANCH : "android12L-release"
+  GCC_64_SOURCE : ""
+  GCC_64_BRANCH : ""
+  GCC_32_SOURCE : ""
+  GCC_32_BRANCH : ""
 
   DEFCONFIG_SOURCE: ""
-  DEFCONFIG_NAME : "veux_defconfig"
+  DEFCONFIG_NAME : "exynos9830_defconfig"
   DEFCONFIG_ORIGIN_IMAGE: ""
   DEFCONFIG_FROM_BOOT: false
 
@@ -84,14 +84,14 @@ env:
   BUILD_DEBUGGER: "false" # Output build errors.
   SKIP_PATCH: "false" # Ignore errors found in Patch Debugger.
 
-  BUILD_OTHER_CONFIG: "false" # Merge config files.
-  MERGE_CONFIG_FILES: "vendor/debugfs.config,vendor/lahaina_QGKI.config"
+  BUILD_OTHER_CONFIG: "true" # Merge config files.
+  MERGE_CONFIG_FILES: "r8s.config"
 
   FREE_MORE_SPACE: "false" # if u want get more space, enabled it.
 
 jobs:
   build-kernel:
-    name: Redmi Note 11 Pro 5G (Based AOSP A16)
+    name: S20FE (Based AOSP A16)
     runs-on: ubuntu-latest # u can changed to ubuntu 22.04, and need container set ubuntu-latest
     # container: archlinux/archlinux:latest # if u need use arch linux -> archlinux/archlinux:latest or ubuntu 20.04 -> ubuntu:focal
     env:
@@ -101,7 +101,7 @@ jobs:
 
     steps:
       - name: ⏰ Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: ⌛️ Compilation environment preparation
         uses: ./.github/workflows/build-env
@@ -126,9 +126,6 @@ jobs:
 
       - name: 🧰 Patch Kernel of Re:Kernel
         uses: ./.github/workflows/patch-rekernel
-
-      - name: 💿 Patch Kernel of Droidspaces
-        uses: ./.github/workflows/patch-droidspaces
 
       - name: 🔒 Patch Kernel of Baseband Guard
         uses: ./.github/workflows/patch-baseband-guard
