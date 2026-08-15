@@ -33,7 +33,7 @@ env:
   KERNELSU_BRANCH : ""
 
   KERNELSU_AUTO_GET : "true"
-  KERNELSU_AUTO_FORK : "sukisu" # xxksu, rsuntk, next, resukisu and sukisu
+  KERNELSU_AUTO_FORK : "resukisu"
 
   SUSFS_ENABLE : true
   SUSFS_FIXED : true
@@ -48,7 +48,7 @@ env:
 
   ROM_TEXT : "aosp_a16"
 
-  # Other env
+  
   PYTHON_VERSION: "3"
 
   PACK_METHOD: "Anykernel3"
