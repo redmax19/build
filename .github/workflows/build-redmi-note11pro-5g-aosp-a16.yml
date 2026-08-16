@@ -12,7 +12,7 @@ env:
   CUSTOM_CMDS : "CROSS_COMPILE=aarch64-linux-gnu-"
   EXTRA_CMDS : "LLVM=1 LLVM_IAS=1"
 
-  KERNEL_SOURCE : "https://github.com/Android-Artisan/android_kernel_samsung_exynos990.git"
+  KERNEL_SOURCE : "https://github.com/ExtremeXT/990_upstream_v2.git"
   KERNEL_BRANCH : "bpf111"
 
   CLANG_SOURCE : "https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b.git"
